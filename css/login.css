@@ -1,0 +1,71 @@
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    font-family: 'Comic Sans MS';
+}
+
+.cabe-login {
+    text-align: center;
+}
+
+.input-login {
+    margin: 10px 0;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.botão-login, .botão-instrucoes {
+    padding: 10px 20px;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Comic Sans MS';
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.botão-login:hover, .botão-instrucoes:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.botão-login:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS';
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input-login.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}

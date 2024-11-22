@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Bolinha - Login</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <form class="form-login">
+        <div class="cabe-login">
+            <img src="img/cerebro.png" alt="brain">
+            <h1>Jogo da Bolinha</h1>
+            <h2>Insira seu nome</h2>
+        </div>
+        <input type="text" placeholder="Nome: ( + 3 caractéres )" class="input-login" required>
+        <button type="submit" class="botão-login" disabled>Iniciar</button>
+        <br>
+        <button type="button" id="instrucoes" class="botão-instrucoes">Instruções</button>
+    </form>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Instruções</h2>
+            <p>
+                1 - Objetivo: Clique o máximo de vezes que conseguir no pão, dentro do tempo 
+                indicado no temporizador, assim adquirindo pontos.
+                <br>
+                2 - Power ups: O bolo e a esfiha são auxílios que o jogador pode coletar 
+                com respectivos efeitos, deixando o jogo mais fácil e divertido.
+                <br>
+                Bolo: Aparece a cada 10 segundos, e desaparece depois de 4 segundos. Seu efeito
+                é adicionar 10 pontos para a lista de pontos do jogador.
+                <br>
+                Esfiha: Pode aparecer a cada 5 segundos com a chance de 25%, e desaparece depois 
+                de 4 segundos. Seu efeito é adicionar 20 segundos ao temporizador do jogador.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const input = document.querySelector('.input-login');
+        const button = document.querySelector('.botão-login');
+        const form = document.querySelector('.form-login');
+        const modal = document.getElementById('modal');
+        const closeModal = document.querySelector('.close');
+
+        const validateInput = ({ target }) => {
+            button.disabled = target.value.length <= 2;
+        };
+
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            localStorage.setItem('Jogador', input.value);
+            window.location = 'intro.html';
+        };
+
+        const openModal = () => {
+            modal.style.display = 'block';
+        };
+
+        const closeModalFunction = () => {
+            modal.style.display = 'none';
+        };
+
+        input.addEventListener('input', validateInput);
+        form.addEventListener('submit', handleSubmit);
+        document.getElementById('instrucoes').addEventListener('click', openModal);
+        closeModal.addEventListener('click', closeModalFunction);
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModalFunction();
+            }
+        };
+        const inputLogin = document.querySelector('.input-login');
+        const buttonLogin = document.querySelector('.botão-login');
+
+        inputLogin.addEventListener('input', () => {
+            if (inputLogin.value.length === 3) {
+        inputLogin.classList.add('shake');
+            } else {
+        inputLogin.classList.remove('shake');
+         }
+        });
+
+    </script>
+</body>
+</html>
